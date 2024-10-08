@@ -12,10 +12,15 @@ fetch('./images.json')
 
   function showImages(data){
     for(let i=0; i < data.length; i++){
+        const a = document.createElement('a');
+        a.href = './images/' + data[i];
+        a.setAttribute('download', 'download')
         const img = document.createElement('img');
-        img.src = './images/' + data[i];
         img.alt=data[i];
-        gallery.append(img);
+        img.src = './images/min_' + data[i];
+        img.setAttribute('loading', 'lazy');
+        a.append(img);
+        gallery.append(a);
 
     }
   }
